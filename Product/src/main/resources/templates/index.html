@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Index</title>
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+
+</head>
+<body style="background-color: #f0f1f2;">
+
+
+
+	<!--  Start Navbar -->
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Products Management System</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="#">Home</a></li>
+				</ul>
+				<form class="d-flex">
+					<input class="form-control me-2" type="search" placeholder="Search"
+						aria-label="Search">
+					<button class="btn btn-primary" type="submit">Search</button>
+				</form>
+			</div>
+		</div>
+	</nav>
+
+	<!-- End Navbar -->
+
+
+	<div class="container p-5">
+
+		<div class="row">
+
+			<div class="col-md-11">
+
+				<div class="card">
+
+					<div class="card-header">
+						<h4 style="text-align: center;">Product Management System</h4>
+						<!-- href would be GetMapping's link -->
+					</div>
+
+					<div class="card-body">
+
+						<table class="table text-center">
+
+							<thead>
+								<tr>
+									<th scope="col">ID</th>
+									<th scope="col">Name</th>
+									<th scope="col">Description</th>
+									<th scope="col">Price</th>
+									<th scope="col">Quantity</th>
+									<th scope="col">Action</th>
+								</tr>
+							</thead>
+
+
+							<tbody>
+								<tr th:each="products:${index}">
+									<th th:text="${products.id}" scope="row" />
+									<td th:text="${products.productName}" />
+									<td th:text="${products.description}" />
+									<td th:text="${products.price}" />
+									<td th:text="${products.quantity}" />
+									<td>
+									<a th:href="@{/editProducts/{id}(id=${products.id})}"
+										class="btn btn-primary">Edit</a>
+										<a th:href="@{/delete/{id}(id=${products.id})}"
+										class="btn btn-danger">Delete</a>
+										
+										
+										
+										<!--  Below link was showing the '?' in the link before id like this 'http://localhost:8080/editform/?10' -->
+										<!-- <a th:href="@{/editform/(${products.id})}"
+										class="btn btn-primary">Edit</a> -->
+										
+										</td>
+								</tr>
+
+							</tbody>
+
+
+						</table>
+					</div>
+
+					<a href="/addform" class="btn btn-primary">Add Products</a>
+					<!-- href would be GetMapping's link -->
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+
+</body>
+</html>
